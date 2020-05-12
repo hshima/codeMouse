@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import br.com.codeMouse.loja.controllers.HomeController;
+import br.com.codeMouse.loja.controller.HomeController;
 
 @EnableWebMvc
 @ComponentScan(basePackageClasses = {HomeController.class})
