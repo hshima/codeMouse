@@ -2,7 +2,7 @@ package br.com.codeMouse.loja.conf;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class ServletSpringMvc extends AbstractAnnotationConfigDispatcherServletInitializer{
+public class ServletSpringMvc extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -11,13 +11,13 @@ public class ServletSpringMvc extends AbstractAnnotationConfigDispatcherServletI
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] {AppWebConfiguration.class};
+		return new Class[] { AppWebConfiguration.class, JPAConfiguration.class }; // Maps configuration Classes to be
+																					// considered by Spring
 	}
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] {"/"};
+		return new String[] { "/" };
 	}
-	
-	
+
 }

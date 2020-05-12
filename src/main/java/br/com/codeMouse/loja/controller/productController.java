@@ -8,6 +8,9 @@ import br.com.codeMouse.loja.model.Product;
 
 public class productController {
 	
+	/*
+	 * @Autowired Allows ProductDAO injection in this servlet
+	 */
 	@Autowired
 	private ProductDAO productDAO;
 	
@@ -18,6 +21,10 @@ public class productController {
 	@RequestMapping("codeMouse/products")
 	public String save(Product product) {
 		System.out.println(product);
+		/*
+		 * persists Product object through .save() from ProductDAO's injected Class 
+		 */
+		productDAO.save(product);
 		return "products/ok";
 	}
 
