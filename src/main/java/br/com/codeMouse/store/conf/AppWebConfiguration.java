@@ -1,12 +1,12 @@
-package br.com.codeMouse.loja.conf;
+package br.com.codeMouse.store.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import br.com.codeMouse.loja.controller.HomeController;
-import br.com.codeMouse.loja.dao.ProductDAO;
+import br.com.codeMouse.store.controller.HomeController;
+import br.com.codeMouse.store.dao.ProductDAO;
 
 @EnableWebMvc
 @ComponentScan(basePackageClasses = { HomeController.class, ProductDAO.class }) // Configures scanned components by

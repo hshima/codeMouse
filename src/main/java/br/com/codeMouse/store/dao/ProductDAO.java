@@ -1,4 +1,4 @@
-package br.com.codeMouse.loja.dao;
+package br.com.codeMouse.store.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.codeMouse.loja.model.Product;
+import br.com.codeMouse.store.model.Product;
 
 /*
  * @Repository annotation marks a Class as reference for communication between  

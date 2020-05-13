@@ -1,4 +1,4 @@
-package br.com.codeMouse.loja.model;
+package br.com.codeMouse.store.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

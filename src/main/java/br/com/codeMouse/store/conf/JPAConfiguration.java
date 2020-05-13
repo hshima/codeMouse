@@ -1,4 +1,4 @@
-package br.com.codeMouse.loja.conf;
+package br.com.codeMouse.store.conf;
 
 import java.util.Properties;
 

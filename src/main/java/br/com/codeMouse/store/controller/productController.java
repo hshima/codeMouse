@@ -1,11 +1,11 @@
-package br.com.codeMouse.loja.controller;
+package br.com.codeMouse.store.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.codeMouse.loja.dao.ProductDAO;
-import br.com.codeMouse.loja.model.Product;
+import br.com.codeMouse.store.dao.ProductDAO;
+import br.com.codeMouse.store.model.Product;
 
 @Controller
 public class productController {
