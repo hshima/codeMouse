@@ -15,29 +15,29 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement //Allows Spring to manage database transactions 
 public class JPAConfiguration {
 	
+	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
 
-		LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
+		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-
-		emfb.setJpaVendorAdapter(jpaVendorAdapter);
+		emf.setJpaVendorAdapter(jpaVendorAdapter);
 
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUsername("root");
 		dataSource.setPassword("1234");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/codeMouse/");
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		emfb.setDataSource(dataSource);
+		dataSource.setUrl("jdbc:mysql://localhost:3306/codeMouse?useTimezone=true&serverTimezone=UTC");
+		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		emf.setDataSource(dataSource);
 
 		Properties jpaProperties = new Properties();
-		jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.Mysql8Dialect");
+		jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 		jpaProperties.setProperty("hibernate.show_sql", "true");
 		jpaProperties.setProperty("hibernate.hbm2ddl.auto", "update");
-		emfb.setJpaProperties(jpaProperties);
+		emf.setJpaProperties(jpaProperties);
 
-		emfb.setPackagesToScan("br.com.codeMouse.loja.model");
+		emf.setPackagesToScan("br.com.codeMouse.loja.model");
 
-		return emfb;
+		return emf;
 	}
 	
 	@Bean // this @Bean provides transactions to the EntityManager

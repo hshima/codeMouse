@@ -7,7 +7,8 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<form action="/codeMouse/produtos" method="post" >
+	<h1>Code Mouse bookstore</h1>
+		<form action="/codeMouse/products" method="post" >
 			<div>
 				<label>Book title</label> <input type="text" name="title" />
 			</div>

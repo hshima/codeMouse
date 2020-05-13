@@ -7,12 +7,21 @@ import javax.persistence.Id;
 
 @Entity
 public class Product {
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) //Hibernate requires an Id for this entity
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Hibernate requires an Id for this entity
 	private Long id;
 	private String title;
 	private String description;
 	private Integer pageCount;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getTitle() {
 		return title;
@@ -38,11 +47,10 @@ public class Product {
 		this.pageCount = pageCount;
 	}
 
-	//alt+shift+'s'+'s'
+	// alt+shift+'s'+'s'
 	@Override
 	public String toString() {
 		return "Product [title=" + title + ", description=" + description + ", pageCount=" + pageCount + "]";
 	}
-	
 
 }
