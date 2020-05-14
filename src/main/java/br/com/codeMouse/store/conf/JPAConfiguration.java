@@ -35,7 +35,7 @@ public class JPAConfiguration {
 		jpaProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 		emf.setJpaProperties(jpaProperties);
 
-		emf.setPackagesToScan("br.com.codeMouse.loja.model");
+		emf.setPackagesToScan("br.com.codeMouse.store.model");
 
 		return emf;
 	}

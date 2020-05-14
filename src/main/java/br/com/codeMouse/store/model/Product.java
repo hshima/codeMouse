@@ -1,5 +1,8 @@
 package br.com.codeMouse.store.model;
 
+import java.util.List;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +17,17 @@ public class Product {
 	private String title;
 	private String description;
 	private Integer pageCount;
+	
+	@ElementCollection
+	private List<Price> prices;
+
+	public List<Price> getPrices() {
+		return prices;
+	}
+
+	public void setPrices(List<Price> prices) {
+		this.prices = prices;
+	}
 
 	public Long getId() {
 		return id;
@@ -47,10 +61,10 @@ public class Product {
 		this.pageCount = pageCount;
 	}
 
-	// alt+shift+'s'+'s'
 	@Override
 	public String toString() {
-		return "Product [title=" + title + ", description=" + description + ", pageCount=" + pageCount + "]";
+		return "Product [id=" + id + ", title=" + title + ", description=" + description + ", pageCount=" + pageCount
+				+ ", prices=" + prices + "]";
 	}
 
 }
