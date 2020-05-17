@@ -14,7 +14,7 @@ import br.com.codeMouse.store.model.PriceType;
 import br.com.codeMouse.store.model.Product;
 
 @Controller
-@RequestMapping("/products") // receives every request to this endpoint
+@RequestMapping(value = "/products") // receives every request to this endpoint
 public class ProductController {
 
 	/*
@@ -23,8 +23,9 @@ public class ProductController {
 	@Autowired
 	private ProductDAO productDAO;
 
-	@RequestMapping("form")
+	@RequestMapping("/form")
 	public ModelAndView form() {
+		System.out.println("buscou página");
 		ModelAndView modelAndView = new ModelAndView("products/form");
 		modelAndView.addObject("kinds", PriceType.values());
 
@@ -34,8 +35,7 @@ public class ProductController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView save(Product product, RedirectAttributes redirectAttributes) {
 		System.out.println(product);
-//		persists Product object through .save() from ProductDAO's injected Class
-		productDAO.save(product);
+		productDAO.save(product); //persists Product object through .save() from ProductDAO's injected Class
 		redirectAttributes.addFlashAttribute("success", "Product successfully registered"); // passes a request valid
 																							// for a single request to
 																							// the next HTTP call that
@@ -53,5 +53,4 @@ public class ProductController {
 		modelAndView.addObject("products", products);
 		return modelAndView;
 	}
-
 }
