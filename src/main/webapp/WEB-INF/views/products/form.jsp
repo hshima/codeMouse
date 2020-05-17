@@ -15,7 +15,7 @@
 		</div>
 		<div>
 			<label>Description</label>
-			<textarea rows="10" cols="20"></textarea>
+			<textarea rows="10" cols="20" name="description"></textarea>
 		</div>
 		<div>
 			<label>Page count</label><input type="text" name="pageCount" />

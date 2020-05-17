@@ -1,5 +1,7 @@
 package br.com.codeMouse.store.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -25,6 +27,10 @@ public class ProductDAO {
 	
 	public void save(Product product) {
 		manager.persist(product);
-		
+	}
+	
+	public List<Product> list() {
+		return manager.createQuery("SELECT p FROM Product p", Product.class)
+				.getResultList(); // Retrieves all the itens of type Product from table Product
 	}
 }
