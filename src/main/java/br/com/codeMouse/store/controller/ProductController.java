@@ -2,8 +2,13 @@ package br.com.codeMouse.store.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.codeMouse.store.dao.ProductDAO;
 import br.com.codeMouse.store.model.PriceType;
 import br.com.codeMouse.store.model.Product;
+import br.com.codeMouse.store.validation.ProductValidation;
 
 @Controller
 @RequestMapping(value = "/products") // receives every request to this endpoint
@@ -23,6 +29,11 @@ public class ProductController {
 	@Autowired
 	private ProductDAO productDAO;
 
+	@InitBinder
+	public void initBinder(WebDataBinder binder) { // Adds validation class in the request
+		binder.addValidators(new ProductValidation());
+	}
+
 	@RequestMapping("/form")
 	public ModelAndView form() {
 		System.out.println("buscou página");
@@ -33,9 +44,16 @@ public class ProductController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView save(Product product, RedirectAttributes redirectAttributes) {
+	public ModelAndView save(@Valid Product product, BindingResult result, RedirectAttributes redirectAttributes) { // Includes
+																													// validation
+																													// Annotation
+		
+		if(result.hasErrors()) {
+			return form();
+		}
 		System.out.println(product);
-		productDAO.save(product); //persists Product object through .save() from ProductDAO's injected Class
+
+		productDAO.save(product); // persists Product object through .save() from ProductDAO's injected Class
 		redirectAttributes.addFlashAttribute("success", "Product successfully registered"); // passes a request valid
 																							// for a single request to
 																							// the next HTTP call that
