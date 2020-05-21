@@ -18,11 +18,10 @@ public class ProductValidation implements Validator {
 	public void validate(Object target, Errors errors) {
 
 		ValidationUtils.rejectIfEmpty(errors, "title", "field.required");
-		ValidationUtils.rejectIfEmpty(errors, "description", "required.field");
-		
+		ValidationUtils.rejectIfEmpty(errors, "description", "field.required");
+
 		Product product = (Product) target;
-		
-		if(product.getPageCount() <= 0) {
+		if (product.getPageCount() == null || product.getPageCount() >= 0) {
 			errors.rejectValue("pageCount", "field.required");
 		}
 
